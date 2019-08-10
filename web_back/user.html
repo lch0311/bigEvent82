@@ -215,7 +215,7 @@
 
            // - 将通过上面的功能得到的地址设置给某个图片的src即可
            $('.user_pic').prop('src', url);
-           $('#exampleInputFile').dataset.url(url);
+          //  $('#exampleInputFile').dataset.url(url);
           //  return url;
         });
 
@@ -237,6 +237,7 @@
         // | 名称 |  类型  | 说明                           |
         // | :--: | :----: | ------------------------------ |
         // | msg  | string | 文字信息 ‘修改成功’ ‘修改失败’ |
+        var formData = new FormData($('form')[0]);
         $('.btn-success').on('click', function(e) {
 
           // 阻止提交按钮默认行为（由ajax进行数据操作）
@@ -246,18 +247,19 @@
           // 其主要用于发送表单数据，但亦可用于发送带键数据(keyed data)，而独立于表单使用。
           // 如果表单enctype属性设为multipart/form-data ，则会使用表单的submit()方法来发送数据，从而，发送数据具有同样形式。
           // 新建一个FormData对象
-          var formData = new FormData($('form')[0]);
+          
           // console.log(formData);
           // 通过get方法获取name， 然后获取表单的值
           // console.log(formData.get('username'));   
           // console.log(formData.get('nickname'));
           // console.log(formData.get('email'));
-          console.log(formData.get('user_pic'));
+          // console.log(formData.get('user_pic'));
           // console.log(formData.get('password'));
       
           // 发送请求
           $.post({
-            url:'http://localhost:8000/admin/userinfo_edit',
+            url:'https://autumnfish.cn/big/admin/userinfo_edit',
+            // url:'http://localhost:8000/admin/userinfo_edit',
             // 不设置头
             contentType: false,
             // 不把数据变字符串
@@ -266,6 +268,7 @@
             success:function(res){
               // 查看是否修改成功
               console.log(res)
+              parent.location.href='./login.html';
             }
           });
           
