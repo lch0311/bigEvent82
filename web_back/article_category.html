@@ -238,11 +238,14 @@
           alert('请填写完整表单')
           return
         }
+
+        // console.log(nameVal)
+        // console.log(slugVal)
         
         //将数据发送到服务端
         $.ajax({
           type: 'post',
-          url:'https://autumnfish.cn/big/admin/category_add',
+          url:'http://localhost:8000/admin/category_add',
           data: {
             name: nameVal,
             slug: slugVal
